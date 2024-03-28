@@ -13,23 +13,17 @@
         android:theme="@style/Theme.Project"
         tools:targetApi="31">
         <activity
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
+            android:name=".book"
+            android:exported="false" />
+        <activity
             android:name=".HomePageF"
             android:exported="false" />
-
-=======
->>>>>>> Stashed changes
+        <activity
             android:name=".signup"
             android:exported="false" />
         <activity
             android:name=".login"
             android:exported="false" />
-<<<<<<< Updated upstream
-=======
->>>>>>> c3c17cf534dc27761f90fd843c93ccb320433534
->>>>>>> Stashed changes
         <activity
             android:name=".MainActivity"
             android:exported="true">
