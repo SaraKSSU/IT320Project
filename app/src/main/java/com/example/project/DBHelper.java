@@ -102,5 +102,38 @@ public class DBHelper extends SQLiteOpenHelper {
         // Create tables again
         onCreate(db);
     }
+    public boolean addClient(String clientName, String email, String phoneNumber, String birthday, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(ClientName, clientName);
+        values.put(Email, email);
+        values.put(PhoneNumber, phoneNumber);
+        values.put(Birthday, birthday);
+        values.put(Password, password);
+
+        long result = db.insert(Client, null, values);
+        db.close(); // Close the database connection
+        if(result==-1)
+            return false;
+        else return true;
+    }
+    public boolean isEmailExists(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+
+        try {
+            String query = "SELECT * FROM " + Client + " WHERE " + Email + "=?";
+            cursor = db.rawQuery(query, new String[]{email});
+
+            return cursor.getCount() > 0;
+        } finally {
+            if (cursor != null)
+                cursor.close();
+
+            db.close();
+        }
+    }
+
 }
 
